@@ -44,6 +44,12 @@ public class Enemigo : MonoBehaviour
     public void DestruirEnemigo()
     {
         destruido = true; // Aquí destrucción
-        Destroy(this.gameObject);
+        StartCoroutine(DestruirConRetraso()); // Destruir con retraso
+    }
+    private IEnumerator DestruirConRetraso()
+    {
+        // Puedes agregar efectos de destrucción aquí si lo deseas
+        yield return new WaitForSeconds(0.1f); // Retardo de 0.1 segundos
+        Destroy(this.gameObject); // Destruye el objeto enemigo
     }
 }

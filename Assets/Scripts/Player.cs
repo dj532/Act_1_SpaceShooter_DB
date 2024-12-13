@@ -92,19 +92,14 @@ public class Player : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-        else if (elOtro.gameObject.CompareTag("Enemigo"))
+        //colisiona con enemigo
+        if (elOtro.gameObject.CompareTag("Enemigo"))
         {
             Enemigo enemigo = elOtro.GetComponent<Enemigo>();
-            if (enemigo != null)
+            if (enemigo != null && enemigo.destruido)
             {
-
-                if (enemigo.destruido)
-                {
-
-                    IncrementarScore(); // Incrementa el puntaje cuando se destruye un enemigo
-                    Destroy(elOtro.gameObject);
-
-                }
+                IncrementarScore(); // Incrementa el puntaje cuando se destruye un enemigo
+                Destroy(elOtro.gameObject);// Destruye enemigo
             } 
         }
     }
